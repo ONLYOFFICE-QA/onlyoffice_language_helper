@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = ['shockwavenn@gmail.com']
   s.files = `git ls-files lib LICENSE.txt README.md`.split($RS)
   s.homepage = 'https://github.com/onlyoffice-testing-robot/onlyoffice_language_helper'
-  s.add_runtime_dependency('activesupport', '~> 5.0')
+  s.add_runtime_dependency('activesupport', '>= 4')
   s.add_runtime_dependency('detect_language', '~> 1.0')
   s.add_runtime_dependency('httparty', '~> 0.1')
   s.add_runtime_dependency('hunspell-ffi', '~> 0.1')
