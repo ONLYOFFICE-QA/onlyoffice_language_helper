@@ -54,7 +54,7 @@ module OnlyofficeLanguageHelper
 
       def default_configuration
         self.expected_language = 'en_US'
-        self.dictionaries_path = "#{Dir.pwd}/lib/onlyoffice_language_helper"
+        self.dictionaries_path = File.dirname(__FILE__)
       end
     end
 
@@ -92,7 +92,7 @@ module OnlyofficeLanguageHelper
 
       def initialize
         @dictionaries = {}
-        Dir.glob(SpellChecker.config.dictionaries_path + '/dictionaries/*').select { |f| File.directory?(f) }.each do |lang|
+        Dir.glob("#{SpellChecker.config.dictionaries_path}/dictionaries/*").select { |f| File.directory?(f) }.each do |lang|
           @dictionaries[File.basename(lang)] =
             Hunspell.new(SpellChecker.path_to_dic_aff(:aff, File.basename(lang)),
                          SpellChecker.path_to_dic_aff(:dic, File.basename(lang)))
