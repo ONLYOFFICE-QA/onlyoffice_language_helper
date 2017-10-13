@@ -36,7 +36,7 @@ module OnlyofficeLanguageHelper
           DetectLanguage.configure do |config|
             config.api_key = key
           end
-          return if DetectLanguage.user_status['status'] == 'ACTIVE'
+          return true if DetectLanguage.user_status['status'] == 'ACTIVE'
         end
         raise 'All keys are non-active. Please register more detectlanguage.com accounts'
       end
