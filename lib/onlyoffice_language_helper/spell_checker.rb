@@ -6,13 +6,14 @@ require 'json'
 require 'cgi'
 require 'whatlanguage'
 
-# USAGE:
-# SpellChecker.configure do |config|
-#  config.expected_language = 'lv_LV'
-# end
-#
-# SpellChecker.check_in_all_dictionaries("viens no veidiem, iespieddarbiem: nav periodisks izdevums")
+# Spellchecker stuff
 module OnlyofficeLanguageHelper
+  # USAGE:
+  # SpellChecker.configure do |config|
+  #  config.expected_language = 'lv_LV'
+  # end
+  #
+  # SpellChecker.check_in_all_dictionaries("viens no veidiem, iespieddarbiem: nav periodisks izdevums")
   module SpellChecker
     include HTTParty
     attr_reader :config
@@ -40,6 +41,7 @@ module OnlyofficeLanguageHelper
       string.to_s.language
     end
 
+    # Spellchecker config
     class Config
       include ActiveSupport::Configurable
 
@@ -82,6 +84,7 @@ module OnlyofficeLanguageHelper
       raise 'Incorrect language' unless File.exist?(path_to_dic_aff(:dic)) || File.exist?(path_to_dic_aff(:aff))
     end
 
+    # Threads for spellchecker
     class DictionariesThreads
       attr_accessor :word
 
