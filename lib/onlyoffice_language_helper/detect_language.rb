@@ -6,7 +6,7 @@ module OnlyofficeLanguageHelper
   class Detect_Language
     class << self
       # @return [Array, String] initialized keys
-      attr_accessor :keys
+      attr_accessor :api_keys
 
       def detect_language(text)
         change_key_on_active
@@ -31,8 +31,8 @@ module OnlyofficeLanguageHelper
       end
 
       def change_key_on_active
-        Detect_Language.keys ||= read_keys
-        Detect_Language.keys.each do |key|
+        Detect_Language.api_keys ||= read_keys
+        Detect_Language.api_keys.each do |key|
           DetectLanguage.configure do |config|
             config.api_key = key
           end
