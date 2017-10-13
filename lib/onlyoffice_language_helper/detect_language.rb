@@ -23,6 +23,7 @@ module OnlyofficeLanguageHelper
       # Set value to variable Detect_Language.keys
       # @return [Array, String] list of keys
       def read_keys
+        return [ENV['DETECT_LANGUAGE_KEY']] if ENV['DETECT_LANGUAGE_KEY']
         OnlyofficeFileHelper::FileHelper.read_array_from_file(Dir.home + '/.detect_language/keys')
       rescue Errno::ENOENT
         raise Errno::ENOENT, "No keys found in #{Dir.home}/.detect_language/ directory." \
