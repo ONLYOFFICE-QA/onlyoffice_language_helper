@@ -1,4 +1,3 @@
-# encoding=utf-8
 require 'hunspell-ffi'
 require 'httparty'
 require 'json'
@@ -37,8 +36,6 @@ module OnlyofficeLanguageHelper
     def self.path_to_dic_aff(extension, language = config.expected_language)
       config.dictionaries_path + "/dictionaries/#{language}/#{language}.#{extension}"
     end
-
-    private_class_method
 
     def self.split_text_by_words(string)
       string.to_s.scan(/\b[[:word:]['-]]+\b/u).uniq
