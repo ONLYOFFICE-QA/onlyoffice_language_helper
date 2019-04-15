@@ -5,6 +5,7 @@ require 'httparty'
 require 'json'
 require 'cgi'
 require 'whatlanguage'
+require_relative 'spell_checker/config'
 require_relative 'spell_checker/dictionaries_threads'
 
 # Spellchecker stuff
@@ -36,23 +37,6 @@ module OnlyofficeLanguageHelper
 
     def self.path_to_dic_aff(extension, language = config.expected_language)
       config.dictionaries_path + "/dictionaries/#{language}/#{language}.#{extension}"
-    end
-
-    # Spellchecker config
-    class Config
-      include ActiveSupport::Configurable
-
-      config_accessor :expected_language
-      config_accessor :dictionaries_path
-
-      def initialize
-        default_configuration
-      end
-
-      def default_configuration
-        self.expected_language = 'en_US'
-        self.dictionaries_path = File.dirname(__FILE__)
-      end
     end
 
     private_class_method
