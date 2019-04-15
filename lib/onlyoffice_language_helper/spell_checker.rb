@@ -38,8 +38,6 @@ module OnlyofficeLanguageHelper
       config.dictionaries_path + "/dictionaries/#{language}/#{language}.#{extension}"
     end
 
-    private_class_method
-
     def self.split_text_by_words(string)
       string.to_s.scan(/\b[[:word:]['-]]+\b/u).uniq
     end
