@@ -21,12 +21,6 @@ Naming/ClassAndModuleCamelCase:
   Exclude:
     - 'lib/onlyoffice_language_helper/detect_language.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - 'onlyoffice_language_helper.gemspec'
-
 # Offense count: 19
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
