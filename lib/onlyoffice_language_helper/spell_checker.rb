@@ -1,6 +1,5 @@
 # encoding=utf-8
 require 'hunspell-ffi'
-require 'active_support/configurable'
 require 'httparty'
 require 'json'
 require 'cgi'

@@ -1,3 +1,5 @@
+require 'active_support/configurable'
+
 module OnlyofficeLanguageHelper
   module SpellChecker
     # Spellchecker config
