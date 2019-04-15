@@ -37,10 +37,6 @@ module OnlyofficeLanguageHelper
       config.dictionaries_path + "/dictionaries/#{language}/#{language}.#{extension}"
     end
 
-    def self.detect_lang_via_whatlanguage(string)
-      string.to_s.language
-    end
-
     # Spellchecker config
     class Config
       include ActiveSupport::Configurable
