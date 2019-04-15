@@ -23,12 +23,6 @@ Naming/ClassAndModuleCamelCase:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/Encoding:
-  Exclude:
-    - 'lib/onlyoffice_language_helper/spell_checker.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
     - 'onlyoffice_language_helper.gemspec'
