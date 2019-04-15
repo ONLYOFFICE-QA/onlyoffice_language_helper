@@ -5,4 +5,5 @@
 ### Refactor
 
 * Remove unused `detect_lang_via_whatlanguage` method
+* Extract `Config` to separate file
 * Extract `DictionariesThreads` to separate file
