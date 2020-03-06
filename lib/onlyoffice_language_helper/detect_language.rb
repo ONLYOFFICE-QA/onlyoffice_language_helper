@@ -5,7 +5,7 @@ require 'onlyoffice_file_helper'
 
 module OnlyofficeLanguageHelper
   # Code for detect language via API of detectlanguage.com
-  class Detect_Language
+  class DetectLanguageWrapper
     class << self
       # @return [Array, String] initialized keys
       attr_accessor :api_keys
@@ -22,7 +22,7 @@ module OnlyofficeLanguageHelper
 
       private
 
-      # Set value to variable Detect_Language.keys
+      # Set value to variable DetectLanguageWrapper.keys
       # @return [Array, String] list of keys
       def read_keys
         return [ENV['DETECT_LANGUAGE_KEY']] if ENV['DETECT_LANGUAGE_KEY']
@@ -34,8 +34,8 @@ module OnlyofficeLanguageHelper
       end
 
       def change_key_on_active
-        Detect_Language.api_keys ||= read_keys
-        Detect_Language.api_keys.each do |key|
+        DetectLanguageWrapper.api_keys ||= read_keys
+        DetectLanguageWrapper.api_keys.each do |key|
           DetectLanguage.configure do |config|
             config.api_key = key
           end
