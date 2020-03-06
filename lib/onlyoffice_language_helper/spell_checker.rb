@@ -15,7 +15,8 @@ module OnlyofficeLanguageHelper
   #  config.expected_language = 'lv_LV'
   # end
   #
-  # SpellChecker.check_in_all_dictionaries("viens no veidiem, iespieddarbiem: nav periodisks izdevums")
+  # SpellChecker.check_in_all_dictionaries("viens no veidiem,
+  #  iespieddarbiem: nav periodisks izdevums")
   module SpellChecker
     include HTTParty
     attr_reader :config
