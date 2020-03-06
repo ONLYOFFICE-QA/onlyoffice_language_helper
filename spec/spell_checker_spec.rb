@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe OnlyofficeLanguageHelper::SpellChecker do
@@ -14,13 +16,17 @@ RSpec.describe OnlyofficeLanguageHelper::SpellChecker do
   end
 
   it '#check_in_all_dictionaries correct' do
-    expect(OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('viens').first['viens']['lv_LV']).to be true
-    expect(OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('viens').first['viens']['en_US']).to be false
+    word = OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('viens')
+                                                 .first['viens']
+    expect(word['lv_LV']).to be true
+    expect(word['en_US']).to be false
   end
 
   it '#check_in_all_dictionaries incorrect' do
-    expect(OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('hello').first['hello']['lv_LV']).to be false
-    expect(OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('hello').first['hello']['en_US']).to be true
+    word = OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('hello')
+                                                 .first['hello']
+    expect(word['lv_LV']).to be false
+    expect(word['en_US']).to be true
   end
 
   it '#configure dictionaries_path' do

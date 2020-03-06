@@ -8,3 +8,4 @@
 * Extract `Config` to separate file
 * Extract `DictionariesThreads` to separate file
 * Remove `ActiveSupport` as dependency
+* Rename `Detect_Language` to `DetectLanguageWrapper`

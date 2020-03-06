@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeLanguageHelper
   module SpellChecker
     # Spellchecker config
