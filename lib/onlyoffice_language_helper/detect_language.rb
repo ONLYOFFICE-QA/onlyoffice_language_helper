@@ -15,7 +15,7 @@ module OnlyofficeLanguageHelper
         DetectLanguage.detect(text)
       end
 
-      def get_all_languages
+      def all_languages
         change_key_on_active
         DetectLanguage.languages
       end
