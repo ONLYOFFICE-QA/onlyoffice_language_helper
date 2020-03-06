@@ -6,6 +6,6 @@ RSpec.describe OnlyofficeLanguageHelper::Detect_Language do
   end
 
   it 'check word for language' do
-    expect(OnlyofficeLanguageHelper::Detect_Language.detect_language('dall').first['language']).to eq('it')
+    expect(OnlyofficeLanguageHelper::Detect_Language.detect_language('Buongiorno').first['language']).to eq('it')
   end
 end
