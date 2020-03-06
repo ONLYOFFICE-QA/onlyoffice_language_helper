@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'detect_language'
 require 'onlyoffice_file_helper'
 

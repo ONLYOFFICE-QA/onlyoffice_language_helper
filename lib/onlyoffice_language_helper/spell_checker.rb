@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'hunspell-ffi'
 require 'httparty'
 require 'json'
