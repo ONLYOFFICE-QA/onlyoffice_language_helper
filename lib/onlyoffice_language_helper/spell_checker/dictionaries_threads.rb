@@ -15,6 +15,7 @@ module OnlyofficeLanguageHelper
             Hunspell.new(SpellChecker.path_to_dic_aff(:aff, File.basename(lang)),
                          SpellChecker.path_to_dic_aff(:dic, File.basename(lang)))
         end
+        @result = {}
         @threads ||= init_threads
       end
 
@@ -26,7 +27,6 @@ module OnlyofficeLanguageHelper
 
       def init_threads
         @threads = []
-        @result = {}
         @dictionaries.each do |key, value|
           @threads << Thread.new do
             loop do
