@@ -4,6 +4,14 @@ require 'spec_helper'
 
 RSpec.describe OnlyofficeLanguageHelper::SpellChecker do
   expected_language = 'lv_LV'
+  let(:latvian_word) do
+    described_class.check_in_all_dictionaries('viens')
+                   .first['viens']
+  end
+  let(:english_word) do
+    described_class.check_in_all_dictionaries('hello')
+                   .first['hello']
+  end
 
   before do
     described_class.configure do |config|
@@ -15,26 +23,23 @@ RSpec.describe OnlyofficeLanguageHelper::SpellChecker do
     expect(described_class.config.expected_language).to eq(expected_language)
   end
 
-  it '#check_in_all_dictionaries correct' do
-    word = described_class.check_in_all_dictionaries('viens')
-                          .first['viens']
-    expect(word['lv_LV']).to be true
-    expect(word['en_US']).to be false
+  describe 'correct word for non-english language' do
+    it 'correct word for latvian' do
+      expect(latvian_word['lv_LV']).to be true
+    end
+
+    it 'incorrect word for english' do
+      expect(latvian_word['en_US']).to be false
+    end
   end
 
-  it '#check_in_all_dictionaries incorrect' do
-    word = described_class.check_in_all_dictionaries('hello')
-                          .first['hello']
-    expect(word['lv_LV']).to be false
-    expect(word['en_US']).to be true
-  end
+  describe 'correct word for english language' do
+    it 'incorrect word for latvian' do
+      expect(english_word['lv_LV']).to be false
+    end
 
-  it '#configure dictionaries_path' do
-    dictionaries_path = '/tmp'
-    expect do
-      described_class.configure do |config|
-        config.dictionaries_path = dictionaries_path
-      end
-    end.to raise_error(RuntimeError)
+    it 'correct word for english' do
+      expect(english_word['en_US']).to be true
+    end
   end
 end

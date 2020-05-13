@@ -56,6 +56,10 @@ module OnlyofficeLanguageHelper
       @config ||= Config.new
     end
 
+    def self.reset_config
+      @config = Config.new
+    end
+
     def self.check_configuration
       raise 'Call SpellChecker.configure method before using it!' unless @dictionary
     end
