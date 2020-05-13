@@ -4,14 +4,6 @@ require 'spec_helper'
 
 RSpec.describe OnlyofficeLanguageHelper::SpellChecker do
   expected_language = 'lv_LV'
-  let(:latvian_word) do
-    described_class.check_in_all_dictionaries('viens')
-                   .first['viens']
-  end
-  let(:english_word) do
-    described_class.check_in_all_dictionaries('hello')
-                   .first['hello']
-  end
 
   before do
     described_class.configure do |config|

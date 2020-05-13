@@ -21,3 +21,13 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def latvian_word
+  OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('viens')
+                                        .first['viens']
+end
+
+def english_word
+  OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('hello')
+                                        .first['hello']
+end
