@@ -27,10 +27,12 @@ module OnlyofficeLanguageHelper
       def read_keys
         return [ENV['DETECT_LANGUAGE_KEY']] if ENV['DETECT_LANGUAGE_KEY']
 
-        OnlyofficeFileHelper::FileHelper.read_array_from_file(Dir.home + '/.detect_language/keys')
+        OnlyofficeFileHelper::FileHelper
+          .read_array_from_file("#{Dir.home}/.detect_language/keys")
       rescue Errno::ENOENT
-        raise Errno::ENOENT, "No keys found in #{Dir.home}/.detect_language/ directory." \
-        "Please create files #{Dir.home}/.detect_language/keys"
+        raise Errno::ENOENT,
+              "No keys found in #{Dir.home}/.detect_language/ directory." \
+              "Please create files #{Dir.home}/.detect_language/keys"
       end
 
       def change_key_on_active
@@ -41,7 +43,8 @@ module OnlyofficeLanguageHelper
           end
           return true if DetectLanguage.user_status['status'] == 'ACTIVE'
         end
-        raise 'All keys are non-active. Please register more detectlanguage.com accounts'
+        raise 'All keys are non-active. '\
+              'Please register more detectlanguage.com accounts'
       end
     end
   end

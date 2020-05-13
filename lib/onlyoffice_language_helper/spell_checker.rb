@@ -26,18 +26,23 @@ module OnlyofficeLanguageHelper
       config
       yield(@config) if block_given?
       check_language
-      @dictionary = Hunspell.new(path_to_dic_aff(:aff), path_to_dic_aff(:dic))
+      @dictionary = Hunspell.new(path_to_dic_aff(:aff),
+                                 path_to_dic_aff(:dic))
       OnlyofficeLoggerHelper.log('Configuring complete!')
     end
 
     def self.check_in_all_dictionaries(string)
       check_configuration
       @dictionaries ||= DictionariesThreads.new
-      split_text_by_words(string).map { |word| parse_spellcheck_result(word, @dictionaries.check_word(word)) }
+      split_text_by_words(string).map do |word|
+        parse_spellcheck_result(word,
+                                @dictionaries.check_word(word))
+      end
     end
 
     def self.path_to_dic_aff(extension, language = config.expected_language)
-      config.dictionaries_path + "/dictionaries/#{language}/#{language}.#{extension}"
+      "#{config.dictionaries_path}/dictionaries/"\
+      "#{language}/#{language}.#{extension}"
     end
 
     def self.split_text_by_words(string)
@@ -46,7 +51,8 @@ module OnlyofficeLanguageHelper
 
     def self.parse_spellcheck_result(word, spellcheck_result)
       unless spellcheck_result[config.expected_language]
-        warn "Word '#{word}' was not found in '#{config.expected_language}' dictionary!"
+        warn("Word '#{word}' was not found in "\
+             "'#{config.expected_language}' dictionary!")
         spellcheck_result['suggestions'] = @dictionary.suggest(word)
       end
       { word => spellcheck_result }
@@ -61,11 +67,16 @@ module OnlyofficeLanguageHelper
     end
 
     def self.check_configuration
-      raise 'Call SpellChecker.configure method before using it!' unless @dictionary
+      return if @dictionary
+
+      raise 'Call SpellChecker.configure method before using it!'
     end
 
     def self.check_language
-      raise 'Incorrect language' unless File.exist?(path_to_dic_aff(:dic)) || File.exist?(path_to_dic_aff(:aff))
+      unless File.exist?(path_to_dic_aff(:dic)) ||
+             File.exist?(path_to_dic_aff(:aff))
+        raise 'Incorrect language'
+      end
     end
   end
 end
