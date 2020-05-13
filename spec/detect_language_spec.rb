@@ -4,11 +4,11 @@ require 'spec_helper'
 
 RSpec.describe OnlyofficeLanguageHelper::DetectLanguageWrapper do
   it 'get list of all languages' do
-    expect(OnlyofficeLanguageHelper::DetectLanguageWrapper.all_languages).to be_a(Array)
+    expect(described_class.all_languages).to be_a(Array)
   end
 
   it 'check word for language' do
-    expect(OnlyofficeLanguageHelper::DetectLanguageWrapper
+    expect(described_class
                .detect_language('Buongiorno')
                .first['language']).to eq('it')
   end
