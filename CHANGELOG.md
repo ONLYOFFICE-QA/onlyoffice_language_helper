@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## v0.2.0 (2020-05-14)
+
 ### New Features
 
 * Add support of `rubocop-rspec`
