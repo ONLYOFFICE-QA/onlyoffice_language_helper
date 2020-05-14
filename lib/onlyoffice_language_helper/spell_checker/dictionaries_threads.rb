@@ -10,11 +10,17 @@ module OnlyofficeLanguageHelper
 
       def initialize
         @dictionaries = {}
-        Dir.glob("#{SpellChecker.config.dictionaries_path}/dictionaries/*").select { |f| File.directory?(f) }.each do |lang|
+        Dir.glob("#{SpellChecker.config.dictionaries_path}/dictionaries/*")
+           .select { |f| File.directory?(f) }.each do |lang|
           @dictionaries[File.basename(lang)] =
-            Hunspell.new(SpellChecker.path_to_dic_aff(:aff, File.basename(lang)),
-                         SpellChecker.path_to_dic_aff(:dic, File.basename(lang)))
+            Hunspell.new(SpellChecker.path_to_dic_aff(:aff,
+                                                      File.basename(lang)),
+                         SpellChecker.path_to_dic_aff(:dic,
+                                                      File.basename(lang)))
         end
+      end
+
+      def threads
         @threads ||= init_threads
       end
 
@@ -24,9 +30,22 @@ module OnlyofficeLanguageHelper
         start_threads
       end
 
+      def start_threads
+        threads.each(&:run)
+        until @result.length == @dictionaries.length
+        end
+        @result
+      end
+
+      private
+
+      def init_threads_data
+        @result = {}
+        threads
+      end
+
       def init_threads
         @threads = []
-        @result = {}
         @dictionaries.each do |key, value|
           @threads << Thread.new do
             loop do
@@ -36,13 +55,6 @@ module OnlyofficeLanguageHelper
           end
         end
         @threads
-      end
-
-      def start_threads
-        @threads.each(&:run)
-        until @result.length == @dictionaries.length
-        end
-        @result
       end
     end
   end

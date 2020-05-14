@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add support of `rubocop-rspec`
+
 ### Refactor
 
 * Remove unused `detect_lang_via_whatlanguage` method
