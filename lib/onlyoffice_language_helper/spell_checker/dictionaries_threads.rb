@@ -18,6 +18,7 @@ module OnlyofficeLanguageHelper
                          SpellChecker.path_to_dic_aff(:dic,
                                                       File.basename(lang)))
         end
+        init_threads_data
       end
 
       def threads
