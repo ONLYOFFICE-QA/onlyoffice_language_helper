@@ -6,6 +6,10 @@
 
 * Add support of `rubocop-rspec`
 
+### Fixes
+
+* Fix coverage report on non-CI environments
+
 ### Refactor
 
 * Remove unused `detect_lang_via_whatlanguage` method
