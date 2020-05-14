@@ -5,6 +5,7 @@
 ### New Features
 
 * Add support of `rubocop-rspec`
+* Add rake task to release gem to github
 
 ### Fixes
 
