@@ -17,3 +17,4 @@
 * Extract `DictionariesThreads` to separate file
 * Remove `ActiveSupport` as dependency
 * Rename `Detect_Language` to `DetectLanguageWrapper`
+* Actualize `gemspec` file
