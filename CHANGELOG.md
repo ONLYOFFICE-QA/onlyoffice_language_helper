@@ -7,12 +7,14 @@
 * Run CI on `ruby-head`
 * Add `dependabot` config
 * Add `markdownlint` in CI
+* Add `rubocop` check in CI
 
 ### Changes
 
 * Use `GitHub Actions` instead of `Travis CI`
 * Freeze all dependencies versions in Gemfile.lock
 * Drop support of rubies older than 2.5
+* Fix some warning from latest rubocop
 
 ## v0.2.0 (2020-05-14)
 
