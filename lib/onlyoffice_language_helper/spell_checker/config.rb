@@ -4,7 +4,9 @@ module OnlyofficeLanguageHelper
   module SpellChecker
     # Spellchecker config
     class Config
+      # @return [String] language to expect
       attr_accessor :expected_language
+      # @return [String] path to lang file
       attr_accessor :dictionaries_path
 
       def initialize
