@@ -10,11 +10,15 @@ module OnlyofficeLanguageHelper
       # @return [Array, String] initialized keys
       attr_accessor :api_keys
 
+      # Detect language of text
+      # @param text [String] text to detect
+      # @return [String] possible language
       def detect_language(text)
         change_key_on_active
         DetectLanguage.detect(text)
       end
 
+      # @return [Array<String>] list of all possible languages
       def all_languages
         change_key_on_active
         DetectLanguage.languages

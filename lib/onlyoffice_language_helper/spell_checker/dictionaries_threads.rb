@@ -21,16 +21,21 @@ module OnlyofficeLanguageHelper
         init_threads_data
       end
 
+      # @return [Array<Thread>] list of checker threads
       def threads
         @threads ||= init_threads
       end
 
+      # Check current word
+      # @param word [String] word to check
+      # @return [Hash] result of check
       def check_word(word)
         @result = {}
         @word = word.to_s
         start_threads
       end
 
+      # @return [Hash] start threads and return results
       def start_threads
         threads.each(&:run)
         until @result.length == @dictionaries.length

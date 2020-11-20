@@ -13,6 +13,7 @@ module OnlyofficeLanguageHelper
         default_configuration
       end
 
+      # @return [nil] default configuration for SpellChecker
       def default_configuration
         @expected_language = 'en_US'
         @dictionaries_path = File.dirname(__dir__)

@@ -23,11 +23,13 @@ RSpec.configure do |config|
   end
 end
 
+# @return [String] latvian word
 def latvian_word
   OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('viens')
                                         .first['viens']
 end
 
+# @return [String] english word
 def english_word
   OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('hello')
                                         .first['hello']

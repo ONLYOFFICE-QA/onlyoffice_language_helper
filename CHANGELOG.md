@@ -16,6 +16,7 @@
 * Freeze all dependencies versions in Gemfile.lock
 * Drop support of rubies older than 2.5
 * Fix some warning from latest rubocop
+* Add all missing documentation
 
 ## v0.2.0 (2020-05-14)
 
