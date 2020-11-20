@@ -8,6 +8,7 @@
 * Add `dependabot` config
 * Add `markdownlint` in CI
 * Add `rubocop` check in CI
+* Add 100% documentation check to CI
 
 ### Changes
 
