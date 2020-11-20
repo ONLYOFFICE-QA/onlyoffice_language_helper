@@ -1,0 +1,22 @@
+name: ci
+on: [push]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install system dependencies
+      run: |
+        sudo apt-get -y update
+        sudo apt-get -y install libhunspell-dev
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+    - name: Build and test with Rake
+      env:
+        DETECT_LANGUAGE_KEY: ${{ secrets.DETECT_LANGUAGE_KEY }}
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rake
