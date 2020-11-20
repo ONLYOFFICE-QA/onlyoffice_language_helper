@@ -10,6 +10,8 @@
 ### Changes
 
 * Use `GitHub Actions` instead of `Travis CI`
+* Freeze all dependencies versions in Gemfile.lock
+* Drop support of rubies older than 2.5
 
 ## v0.2.0 (2020-05-14)
 
