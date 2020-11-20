@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Run CI on `ruby-head`
+
 ### Changes
 
 * Use `GitHub Actions` instead of `Travis CI`

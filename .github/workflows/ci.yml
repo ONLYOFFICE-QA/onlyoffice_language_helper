@@ -3,6 +3,14 @@ on: [push]
 jobs:
   ci:
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.allow-failures }}
+    strategy:
+      matrix:
+        ruby: [ 2.7 ]
+        allow-failures: [ false ]
+        include:
+          - ruby: head
+            allow-failures: true
     steps:
     - uses: actions/checkout@v2
     - name: Install system dependencies
