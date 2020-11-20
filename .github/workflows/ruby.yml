@@ -6,9 +6,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install system dependencies
-      run:
-        - sudo apt-get -y update
-        - sudo apt-get -y install libhunspell-dev
+      run: |
+        sudo apt-get -y update
+        sudo apt-get -y install libhunspell-dev
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
