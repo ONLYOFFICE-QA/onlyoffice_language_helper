@@ -5,6 +5,7 @@
 ### New Features
 
 * Run CI on `ruby-head`
+* Add `dependabot` config
 
 ### Changes
 
