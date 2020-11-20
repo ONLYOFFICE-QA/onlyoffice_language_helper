@@ -6,6 +6,7 @@
 
 * Run CI on `ruby-head`
 * Add `dependabot` config
+* Add `markdownlint` in CI
 
 ### Changes
 
