@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Changes
+
+* Use `GitHub Actions` instead of `Travis CI`
+
 ## v0.2.0 (2020-05-14)
 
 ### New Features
