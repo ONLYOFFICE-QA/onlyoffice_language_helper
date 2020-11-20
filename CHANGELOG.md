@@ -9,6 +9,7 @@
 * Add `markdownlint` in CI
 * Add `rubocop` check in CI
 * Add 100% documentation check to CI
+* Add `yard` development dependency
 
 ### Changes
 
