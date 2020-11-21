@@ -18,6 +18,7 @@
 * Drop support of rubies older than 2.5
 * Fix some warning from latest rubocop
 * Add all missing documentation
+* More strict dependencies version for some
 
 ## v0.2.0 (2020-05-14)
 

@@ -23,7 +23,8 @@ Gem::Specification.new do |s|
   s.files = Dir['lib/**/*']
   s.license = 'AGPL-3.0'
   s.add_runtime_dependency('detect_language', '~> 1')
-  s.add_runtime_dependency('httparty', '~> 0')
+  s.add_runtime_dependency('ffi', '>= 1.9.24')
+  s.add_runtime_dependency('httparty', '>= 0.10.0')
   s.add_runtime_dependency('hunspell-ffi', '~> 0')
   s.add_runtime_dependency('onlyoffice_file_helper', '~> 0')
   s.add_runtime_dependency('onlyoffice_logger_helper', '~> 1')
