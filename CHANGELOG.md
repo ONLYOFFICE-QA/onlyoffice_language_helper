@@ -19,6 +19,7 @@
 * Fix some warning from latest rubocop
 * Add all missing documentation
 * More strict dependencies version for some
+* Move repo to `ONLYOFFICE-QA` organization
 
 ## v0.2.0 (2020-05-14)
 
