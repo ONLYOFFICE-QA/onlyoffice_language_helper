@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## v0.3.0 (2020-11-22)
+
 ### New Features
 
 * Run CI on `ruby-head`
