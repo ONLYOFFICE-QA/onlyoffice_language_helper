@@ -3,7 +3,7 @@ PATH
   specs:
     onlyoffice_language_helper (0.2.0)
       detect_language (~> 1)
-      httparty (~> 0)
+      httparty (>= 0.10.0)
       hunspell-ffi (~> 0)
       onlyoffice_file_helper (~> 0)
       onlyoffice_logger_helper (~> 1)
