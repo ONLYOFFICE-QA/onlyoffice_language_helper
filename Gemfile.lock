@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onlyoffice_language_helper (0.2.0)
+    onlyoffice_language_helper (0.3.0)
       detect_language (~> 1)
       httparty (>= 0.10.0)
       hunspell-ffi (~> 0)
