@@ -84,7 +84,7 @@ GEM
     simplecov_json_formatter (0.1.2)
     unicode-display_width (1.7.0)
     whatlanguage (1.0.6)
-    yard (0.9.25)
+    yard (0.9.26)
 
 PLATFORMS
   ruby
