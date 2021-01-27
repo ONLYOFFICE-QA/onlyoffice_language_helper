@@ -14,7 +14,7 @@ GEM
   specs:
     ast (2.4.2)
     childprocess (4.0.0)
-    codecov (0.4.0)
+    codecov (0.4.1)
       simplecov (>= 0.15, < 0.22)
     detect_language (1.1.2)
     diff-lcs (1.4.4)
