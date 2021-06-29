@@ -50,7 +50,7 @@ module OnlyofficeLanguageHelper
     # @return [String] path
     def self.path_to_dic_aff(extension, language = config.expected_language)
       "#{config.dictionaries_path}/dictionaries/"\
-      "#{language}/#{language}.#{extension}"
+        "#{language}/#{language}.#{extension}"
     end
 
     # Split text by words
