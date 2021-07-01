@@ -26,7 +26,7 @@ module OnlyofficeLanguageHelper
       config
       yield(@config) if block_given?
       check_language
-      FFI::Hunspell.directories = all_languages_diconaries
+      FFI::Hunspell.directories = all_languages_dictonaries
       OnlyofficeLoggerHelper.log('Configuring complete!')
     end
 
@@ -93,11 +93,11 @@ module OnlyofficeLanguageHelper
 
     # @return [Array<String>] list of available dictonaries
     def self.available_languages
-      all_languages_diconaries.map { |dir| File.basename(dir) }
+      all_languages_dictonaries.map { |dir| File.basename(dir) }
     end
 
     # @return [Array<String>] list of all dictionaries dir
-    def self.all_languages_diconaries
+    def self.all_languages_dictonaries
       Dir.glob("#{Dir.pwd}/lib/onlyoffice_language_helper/dictionaries/*").select do |fn|
         File.directory?(fn)
       end
