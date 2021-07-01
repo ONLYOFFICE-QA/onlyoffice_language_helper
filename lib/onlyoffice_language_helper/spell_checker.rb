@@ -36,18 +36,25 @@ module OnlyofficeLanguageHelper
     def self.check_in_all_dictionaries(string)
       results = []
       split_text_by_words(string).map do |word|
-        word_results = {}
-        available_languages.each do |language|
-          FFI::Hunspell.dict(language) do |dict|
-            check_result = dict.check?(word)
-            word_results[language] = check_result
-          end
-        end
         word_hash = {}
-        word_hash[word] = word_results
+        word_hash[word] = check_word_in_all(word)
         results << word_hash
       end
       results
+    end
+
+    # Check word in all dictionaries
+    # @param [String] word to check
+    # @return [Hash] word check result
+    def self.check_word_in_all(word)
+      word_results = {}
+      available_languages.each do |language|
+        FFI::Hunspell.dict(language) do |dict|
+          check_result = dict.check?(word)
+          word_results[language] = check_result
+        end
+      end
+      word_results
     end
 
     # Get path to dic aff
