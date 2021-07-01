@@ -84,12 +84,14 @@ module OnlyofficeLanguageHelper
       end
     end
 
+    # @return [Array<String>] list of available dictonaries
     def self.available_languages
       all_languages_diconaries.map { |dir| File.basename(dir) }
     end
 
+    # @return [Array<String>] list of all dictionaries dir
     def self.all_languages_diconaries
-      Dir.glob('/home/lobashov/sources/onlyoffice_language_helper/lib/onlyoffice_language_helper/dictionaries/*').select do |fn|
+      Dir.glob("#{Dir.pwd}/lib/onlyoffice_language_helper/dictionaries/*").select do |fn|
         File.directory?(fn)
       end
     end
