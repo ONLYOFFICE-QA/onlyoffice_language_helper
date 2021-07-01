@@ -6,6 +6,10 @@
 
 * Add `rubocop-rake` support
 
+### Changes
+
+* **Major Change** Use `ffi-hunspell` instead of `hunspell-ffi`
+
 ## v0.3.0 (2020-11-22)
 
 ### New Features
