@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-require 'hunspell-ffi'
+require 'ffi/hunspell'
 require 'httparty'
 require 'json'
 require 'cgi'
 require 'whatlanguage'
 require_relative 'spell_checker/config'
-require_relative 'spell_checker/dictionaries_threads'
 
 # Spellchecker stuff
 module OnlyofficeLanguageHelper
@@ -27,8 +26,7 @@ module OnlyofficeLanguageHelper
       config
       yield(@config) if block_given?
       check_language
-      @dictionary = Hunspell.new(path_to_dic_aff(:aff),
-                                 path_to_dic_aff(:dic))
+      FFI::Hunspell.directories = all_languages_dictonaries
       OnlyofficeLoggerHelper.log('Configuring complete!')
     end
 
@@ -36,12 +34,41 @@ module OnlyofficeLanguageHelper
     # @param string [String] string to check
     # @return [Array<Hash>] result of check
     def self.check_in_all_dictionaries(string)
-      check_configuration
-      @dictionaries ||= DictionariesThreads.new
+      results = []
       split_text_by_words(string).map do |word|
-        parse_spellcheck_result(word,
-                                @dictionaries.check_word(word))
+        word_hash = {}
+        word_hash[word] = check_word_in_all(word)
+        results << word_hash
       end
+      results
+    end
+
+    # Check word in all dictionaries
+    # @param [String] word to check
+    # @return [Hash] word check result
+    def self.check_word_in_all(word)
+      word_results = {}
+
+      @threads = []
+      available_languages.each do |language|
+        @threads << Thread.new do
+          word_results[language] = check_single_word(word, language)
+        end
+      end
+      @threads.each(&:join)
+      word_results
+    end
+
+    # Check if word correct in single language
+    # @param [String] word to check
+    # @param [String] language to check
+    # @return [Boolean] result of check
+    def self.check_single_word(word, language)
+      dict = FFI::Hunspell.dict(language)
+      result = dict.check?(word)
+      dict.close
+      OnlyofficeLoggerHelper.log("Word `#{word}` in `#{language}` correct: #{result}")
+      result
     end
 
     # Get path to dic aff
@@ -60,19 +87,6 @@ module OnlyofficeLanguageHelper
       string.to_s.scan(/\b[[:word:]['-]]+\b/u).uniq
     end
 
-    # Parse spellchecker result
-    # @param word [String] word to check
-    # @param spellcheck_result [Hash] param to set result
-    # @return [Hash] value of result
-    def self.parse_spellcheck_result(word, spellcheck_result)
-      unless spellcheck_result[config.expected_language]
-        warn("Word '#{word}' was not found in "\
-             "'#{config.expected_language}' dictionary!")
-        spellcheck_result['suggestions'] = @dictionary.suggest(word)
-      end
-      { word => spellcheck_result }
-    end
-
     # @return [Config] get current config
     def self.config
       @config ||= Config.new
@@ -83,18 +97,23 @@ module OnlyofficeLanguageHelper
       @config = Config.new
     end
 
-    # @return [nil] check if current config is right
-    def self.check_configuration
-      return if @dictionary
-
-      raise 'Call SpellChecker.configure method before using it!'
-    end
-
     # @return [nil] check if current language has dictonaries
     def self.check_language
       unless File.exist?(path_to_dic_aff(:dic)) ||
              File.exist?(path_to_dic_aff(:aff))
         raise 'Incorrect language'
+      end
+    end
+
+    # @return [Array<String>] list of available dictonaries
+    def self.available_languages
+      all_languages_dictonaries.map { |dir| File.basename(dir) }
+    end
+
+    # @return [Array<String>] list of all dictionaries dir
+    def self.all_languages_dictonaries
+      Dir.glob("#{Dir.pwd}/lib/onlyoffice_language_helper/dictionaries/*").select do |fn|
+        File.directory?(fn)
       end
     end
   end
