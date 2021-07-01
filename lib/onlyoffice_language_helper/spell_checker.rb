@@ -48,13 +48,27 @@ module OnlyofficeLanguageHelper
     # @return [Hash] word check result
     def self.check_word_in_all(word)
       word_results = {}
+
+      @threads = []
       available_languages.each do |language|
-        FFI::Hunspell.dict(language) do |dict|
-          check_result = dict.check?(word)
-          word_results[language] = check_result
+        @threads << Thread.new do
+          word_results[language] = check_single_word(word, language)
         end
       end
+      @threads.each(&:join)
       word_results
+    end
+
+    # Check if word correct in single language
+    # @param [String] word to check
+    # @param [String] language to check
+    # @return [Boolean] result of check
+    def self.check_single_word(word, language)
+      dict = FFI::Hunspell.dict(language)
+      result = dict.check?(word)
+      dict.close
+      OnlyofficeLoggerHelper.log("Word `#{word}` in `#{language}` correct: #{result}")
+      result
     end
 
     # Get path to dic aff

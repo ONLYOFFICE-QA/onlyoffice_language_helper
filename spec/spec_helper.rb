@@ -25,7 +25,7 @@ end
 
 # @return [String] latvian word
 def latvian_word
-  OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('viens pipa')
+  OnlyofficeLanguageHelper::SpellChecker.check_in_all_dictionaries('viens')
                                         .first['viens']
 end
 
