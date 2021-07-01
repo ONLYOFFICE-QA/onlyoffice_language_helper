@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## v0.4.0 (2021-07-01)
+
 ### New Features
 
 * Add `rubocop-rake` support
