@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `yamllint` support in CI
+
 ### Changes
 
 * Require `mfa` for releasing gem
