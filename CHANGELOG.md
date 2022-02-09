@@ -5,6 +5,7 @@
 ### Changes
 
 * Require `mfa` for releasing gem
+* Actualize `nodejs` version in CI
 
 ## v0.4.0 (2021-07-01)
 
