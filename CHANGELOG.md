@@ -11,6 +11,7 @@
 * Require `mfa` for releasing gem
 * Actualize `nodejs` version in CI
 * Remove `codeclimate` config since we do not use it any more
+* Change `dependabot` config to check at 8AM MSK
 
 ## v0.4.0 (2021-07-01)
 
