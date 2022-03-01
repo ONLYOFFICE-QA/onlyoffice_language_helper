@@ -14,6 +14,7 @@
 * Remove `codeclimate` config since we do not use it any more
 * Change `dependabot` config to check at 8AM MSK
 * Fix ruby version usage in CI
+* Changes from `rubocop-rspec` update to 2.9.0
 
 ## v0.4.0 (2021-07-01)
 
