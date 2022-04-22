@@ -15,6 +15,7 @@
 * Change `dependabot` config to check at 8AM MSK
 * Fix ruby version usage in CI
 * Changes from `rubocop-rspec` update to 2.9.0
+* Fix `rubocop-1.28.1` code issues
 
 ## v0.4.0 (2021-07-01)
 
