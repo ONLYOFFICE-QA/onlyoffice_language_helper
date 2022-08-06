@@ -29,9 +29,7 @@ module OnlyofficeLanguageHelper
       # Set value to variable DetectLanguageWrapper.keys
       # @return [Array, String] list of keys
       def read_keys
-        # rubocop:disable Style/FetchEnvVar
         return [ENV['DETECT_LANGUAGE_KEY']] if ENV.key?('DETECT_LANGUAGE_KEY')
-        # rubocop:enable Style/FetchEnvVar
 
         OnlyofficeFileHelper::FileHelper
           .read_array_from_file("#{Dir.home}/.detect_language/keys")
@@ -49,7 +47,7 @@ module OnlyofficeLanguageHelper
           end
           return true if DetectLanguage.user_status['status'] == 'ACTIVE'
         end
-        raise 'All keys are non-active. '\
+        raise 'All keys are non-active. ' \
               'Please register more detectlanguage.com accounts'
       end
     end
