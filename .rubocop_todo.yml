@@ -4,9 +4,3 @@
 # The point is for the user to remove these configuration records
 # one by one as the offenses are removed from the code base.
 # Note that changes in the inspected code, or installation of new
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Lint/RedundantCopDisableDirective:
-  Exclude:
-    - 'lib/onlyoffice_language_helper/detect_language.rb'
