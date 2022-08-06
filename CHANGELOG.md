@@ -16,6 +16,7 @@
 * Fix ruby version usage in CI
 * Changes from `rubocop-rspec` update to 2.9.0
 * Fix `rubocop-1.28.1` code issues
+* Drop `ruby-2.6` support since it's EOL'ed
 
 ## v0.4.0 (2021-07-01)
 
