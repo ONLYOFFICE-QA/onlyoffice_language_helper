@@ -20,7 +20,7 @@ GEM
     detect_language (1.1.2)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    ffi (1.15.5)
+    ffi (1.16.2)
     ffi-hunspell (0.6.1)
       ffi (~> 1.0)
     httparty (0.21.0)
