@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('detect_language', '~> 1')
   s.add_runtime_dependency('ffi-hunspell', '~> 0')
   s.add_runtime_dependency('httparty', '>= 0.10.0')
-  s.add_runtime_dependency('onlyoffice_file_helper', '< 2')
+  s.add_runtime_dependency('onlyoffice_file_helper', '< 3')
   s.add_runtime_dependency('onlyoffice_logger_helper', '~> 1')
   s.add_runtime_dependency('whatlanguage', '~> 1')
 end
