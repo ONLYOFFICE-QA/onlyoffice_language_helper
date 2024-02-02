@@ -11,6 +11,7 @@
 ### Changes
 
 * Drop support of `ruby-2.7`, since it's EOLed
+* Migrate coverage report to `codecov v4`
 
 ## v0.5.0 (2022-08-17)
 
