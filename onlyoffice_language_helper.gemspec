@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
     'rubygems_mfa_required' => 'true'
   }
   s.files = Dir['lib/**/*']
-  s.license = 'AGPL-3.0'
+  s.license = 'AGPL-3.0-or-later'
   s.add_runtime_dependency('detect_language', '~> 1')
   s.add_runtime_dependency('ffi-hunspell', '~> 0')
   s.add_runtime_dependency('httparty', '>= 0.10.0')

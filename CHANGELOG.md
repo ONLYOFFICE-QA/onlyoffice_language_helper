@@ -8,6 +8,10 @@
 * Add `ruby-3.3` to CI
 * Add `dependabot` check for `GitHub Actions`
 
+### Fixes
+
+* Fix incorrect gem license name
+
 ### Changes
 
 * Drop support of `ruby-2.7`, since it's EOLed
