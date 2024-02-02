@@ -12,6 +12,7 @@
 
 * Fix incorrect gem license name
 * Fix warning about homepage gem metadata
+* Fix gem build warning about `httparty` gem version
 
 ### Changes
 
