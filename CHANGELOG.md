@@ -11,6 +11,7 @@
 ### Fixes
 
 * Fix incorrect gem license name
+* Fix warning about homepage gem metadata
 
 ### Changes
 
