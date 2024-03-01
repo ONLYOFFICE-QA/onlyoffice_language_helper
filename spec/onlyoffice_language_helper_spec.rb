@@ -4,6 +4,6 @@ require 'spec_helper'
 
 RSpec.describe OnlyofficeLanguageHelper do
   it 'has a version number' do
-    expect(OnlyofficeLanguageHelper::VERSION).not_to be_nil
+    expect(described_class::VERSION).not_to be_nil
   end
 end

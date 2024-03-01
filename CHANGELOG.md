@@ -21,6 +21,7 @@
 * Drop support of `ruby-2.7`, since it's EOLed
 * Migrate coverage report to `codecov v4`
 * Update minimal `httparty` version with security fix
+* Fix `rubocop-rspec-2.27.0` cop `RSpec/DescribedClass` warnings.
 
 ## v0.5.0 (2022-08-17)
 
