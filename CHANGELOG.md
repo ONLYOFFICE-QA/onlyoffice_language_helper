@@ -22,6 +22,7 @@
 * Migrate coverage report to `codecov v4`
 * Update minimal `httparty` version with security fix
 * Fix `rubocop-rspec-2.27.0` cop `RSpec/DescribedClass` warnings.
+* Fix `rubocop-1.65.0` cop `Gemspec/AddRuntimeDependency`
 
 ## v0.5.0 (2022-08-17)
 
