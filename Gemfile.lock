@@ -15,7 +15,7 @@ GEM
     ast (2.4.2)
     childprocess (5.1.0)
       logger (~> 1.5)
-    csv (3.3.1)
+    csv (3.3.2)
     detect_language (1.1.2)
     diff-lcs (1.5.1)
     docile (1.4.1)
