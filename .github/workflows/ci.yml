@@ -21,9 +21,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+      - name: Write DETECT_LANGUAGE_KEY to file
+        run: |
+          mkdir -p ~/.detect_language
+          echo ${{ secrets.DETECT_LANGUAGE_KEY }} > ~/.detect_language/keys
       - name: Build and test with Rake
-        env:
-          DETECT_LANGUAGE_KEY: ${{ secrets.DETECT_LANGUAGE_KEY }}
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
