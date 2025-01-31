@@ -32,7 +32,7 @@ RSpec.describe OnlyofficeLanguageHelper::DetectLanguageWrapper do
   end
 
   it 'uses ENV key if present' do
-    original_env_key = ENV['DETECT_LANGUAGE_KEY']
+    original_env_key = ENV.fetch('DETECT_LANGUAGE_KEY', nil)
     ENV['DETECT_LANGUAGE_KEY'] = 'env_key'
     expect(described_class.send(:read_keys)).to eq(['env_key'])
     ENV['DETECT_LANGUAGE_KEY'] = original_env_key
