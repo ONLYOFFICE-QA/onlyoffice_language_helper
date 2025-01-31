@@ -20,11 +20,9 @@ RSpec.describe OnlyofficeLanguageHelper::SpellChecker do
   end
 
   it '#configure with block' do
-    expect do
-      described_class.configure do |config|
-        config.expected_language = 'en_US'
-      end
-    end.not_to raise_error
+    described_class.configure do |config|
+      config.expected_language = 'en_US'
+    end
     expect(described_class.config.expected_language).to eq('en_US')
   end
 
