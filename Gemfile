@@ -6,7 +6,7 @@ gemspec
 
 group :test do
   gem 'rspec', '~> 3'
-  gem 'simplecov-cobertura', '~> 2'
+  gem 'simplecov', '~> 0', require: false
 end
 
 group :development do
