@@ -15,6 +15,17 @@ RSpec.describe OnlyofficeLanguageHelper::SpellChecker do
     expect(described_class.config.expected_language).to eq(expected_language)
   end
 
+  it '#configure without block' do
+    expect { described_class.configure }.not_to raise_error
+  end
+
+  it '#configure with block' do
+    described_class.configure do |config|
+      config.expected_language = 'en_US'
+    end
+    expect(described_class.config.expected_language).to eq('en_US')
+  end
+
   describe 'correct word for non-english language' do
     it 'correct word for latvian' do
       expect(latvian_word['lv_LV']).to be true

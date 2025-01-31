@@ -24,6 +24,12 @@ module OnlyofficeLanguageHelper
         DetectLanguage.languages
       end
 
+      # Reset all cache keys for detect language
+      # @return [NilClass] nil
+      def reset_keys
+        DetectLanguageWrapper.api_keys = nil
+      end
+
       private
 
       # Set value to variable DetectLanguageWrapper.keys

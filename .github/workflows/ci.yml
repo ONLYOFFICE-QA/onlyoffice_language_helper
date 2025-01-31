@@ -21,20 +21,20 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+      - name: Write DETECT_LANGUAGE_KEY to file
+        run: |
+          mkdir -p ~/.detect_language
+          echo ${{ secrets.DETECT_LANGUAGE_KEY }} > ~/.detect_language/keys
       - name: Build and test with Rake
-        env:
-          DETECT_LANGUAGE_KEY: ${{ secrets.DETECT_LANGUAGE_KEY }}
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rake
       - name: Check source files using `rubocop`
         run: rubocop
+      - name: Check `simplecov` line coverage
+        run: cat coverage/.last_run.json | jq '.result.line' | grep -q '100'
+      - name: Check `simplecov` branch coverage
+        run: cat coverage/.last_run.json | jq '.result.branch' | grep -q '100'
       - name: Check that code 100% documented
         run: yardoc . | grep -q '100.00% documented'
-      - uses: codecov/codecov-action@v5
-        if: matrix.ruby == '3.3'
-        with:
-          fail_ci_if_error: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
