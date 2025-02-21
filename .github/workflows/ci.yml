@@ -31,7 +31,7 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rake
       - name: Check source files using `rubocop`
-        run: rubocop
+        run: bundle exec rubocop
       - name: Check `simplecov` line coverage
         run: cat coverage/.last_run.json | jq '.result.line' | grep -q '100'
       - name: Check `simplecov` branch coverage
