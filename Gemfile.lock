@@ -16,7 +16,7 @@ GEM
     bigdecimal (3.1.9)
     childprocess (5.1.0)
       logger (~> 1.5)
-    csv (3.3.2)
+    csv (3.3.5)
     detect_language (1.1.2)
     diff-lcs (1.6.0)
     docile (1.4.1)
